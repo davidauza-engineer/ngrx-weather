@@ -14,7 +14,7 @@ export class LocationService {
 
   addLocation(zipcode : string){
     this.locations.push(zipcode);
-    this.weatherService.addCurrentConditions(zipcode);
+    this.weatherService.loadCurrentConditions(zipcode);
   }
 
   removeLocation(zipcode : string){

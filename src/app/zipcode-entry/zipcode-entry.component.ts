@@ -17,5 +17,4 @@ export class ZipcodeEntryComponent {
     this.store.dispatch(new AddZipcode(zipcode));
     this.service.addLocation(zipcode);
   }
-
 }

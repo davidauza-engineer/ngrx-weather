@@ -18,6 +18,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { CurrentConditionsEffects } from './effects/current-conditions.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,9 +33,9 @@ import { CurrentConditionsEffects } from './effects/current-conditions.effects';
     HttpClientModule,
     RouterModule,
     routing,
+    EffectsModule.forRoot([CurrentConditionsEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forFeature([CurrentConditionsEffects])
+    !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [LocationService, WeatherService],
   bootstrap: [AppComponent]
