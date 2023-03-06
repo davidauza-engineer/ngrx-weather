@@ -1,11 +1,20 @@
 import { Action } from '@ngrx/store';
 
 export enum ForecastActionTypes {
-  LoadForecasts = '[Forecast] Load Forecasts'
+  ForecastLoaded = '[Forecast] Forecast Loaded',
+  ForecastLoadFailed = '[Forecast] Forecast Load Failed'
 }
 
-export class Forecast implements Action {
-  readonly type = ForecastActionTypes.LoadForecasts;
+export class ForecastLoaded implements Action {
+  readonly type = ForecastActionTypes.ForecastLoaded;
+
+  constructor(public forecast: any){}
 }
 
-export type ForecastActions = LoadForecasts;
+export class ForecastLoadFailed implements Action {
+  readonly type = ForecastActionTypes.ForecastLoadFailed;
+
+  constructor(public zipcode: string, public error: any){}
+}
+
+export type ForecastActions = ForecastLoaded | ForecastLoadFailed;
