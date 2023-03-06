@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import {LocationService} from "../location.service";
@@ -10,11 +10,5 @@ import { AddZipcode } from '../actions/zipcode.actions';
   templateUrl: './zipcode-entry.component.html'
 })
 export class ZipcodeEntryComponent {
-
-  constructor(private store: Store<State>, private service : LocationService) { }
-
-  addLocation(zipcode : string){
-    this.store.dispatch(new AddZipcode(zipcode));
-    this.service.addLocation(zipcode);
-  }
+  @Output() zipAdded = new EventEmitter<string>();
 }
